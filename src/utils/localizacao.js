@@ -1,4 +1,4 @@
-const request = require("request");
+const request = require('request');
 
 const localizacao = (nomeLocal, callback) => {
     const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(nomeLocal) + '.json?access_token=pk.eyJ1IjoidmJwdTk4IiwiYSI6ImNrNWZ2NzhidTAxY2gzbm9uc3N4MTY5cDIifQ.D4ucUZ1lZdIhItnpv7lF5Q&language=pt&limit=1'
@@ -28,25 +28,26 @@ const previsao = (latitude, longitude, callback) => {
     });
 }
 
-const gerarDados = (nomeLocal) => {
+const GerarDados = (nomeLocal) => {
     localizacao(nomeLocal, (erro, dados) => {
         if(erro){
-            console.log(erro);
+            return '1';
         }
-        else if(dados){
-            console.log(`Cidade: ${dados.body.features[0].place_name} ` + 
-            `Latitude: ${dados.body.features[0].geometry.coordinates[1]} ` +
-            `Longitude: ${dados.body.features[0].geometry.coordinates[0]} `);
-            previsao(dados.body.features[0].geometry.coordinates[1], dados.body.features[0].geometry.coordinates[0], (erro, dados) => {
-                if(erro){
-                    console.log(erro);
-                }
-                else if(dados){
-                    console.log(`${dados.body.daily.data[0].summary} A temperatura atual é de: ${dados.body.currently.temperature}°C. A possibilidade de chuva é de: ${dados.body.currently.precipProbability}%`);
-                }
-            });
-        }
+        let dadosLocal = `Cidade: ${dados.body.features[0].place_name} ` + 
+        `Latitude: ${dados.body.features[0].geometry.coordinates[1]} ` +
+        `Longitude: ${dados.body.features[0].geometry.coordinates[0]} `;
+        previsao(dados.body.features[0].geometry.coordinates[1], dados.body.features[0].geometry.coordinates[0], (erro, dadosP) => {
+            if(erro){
+                return '2';
+            }
+            let dadosPrevisao = `\n${dadosP.body.daily.data[0].summary} A temperatura atual é de: ${dadosP.body.currently.temperature}°C.` +
+                                `A probabilidade de chuva é de: ${dadosP.body.currently.precipProbability}%`;
+            return '5';
+        });
     });
 }
 
-module.exports = gerarDados;
+module.exports = {
+    localizacao: localizacao,
+    previsao: previsao
+};
