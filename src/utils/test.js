@@ -1,20 +1,24 @@
-const fLocal = require('./localizacao');
+const localizacao = require('./localizacao');
+const previsao = require('./previsao');
 
-fLocal.localizacao(process.argv[2], (erro, dados) => {
+const teste = localizacao(process.argv[2], (erro, {latitude, longitude, local}) => {
     if(erro){
-        return console.log(erro);
+        return erro;
     }
     // let resposta = `Cidade: ${dados.body.features[0].place_name} ` + 
     //     `Latitude: ${dados.body.features[0].geometry.coordinates[1]} ` +
     //     `Longitude: ${dados.body.features[0].geometry.coordinates[0]} `;
-    fLocal.previsao(dados.body.features[0].geometry.coordinates[1], dados.body.features[0].geometry.coordinates[0], (erro, dadosPrevisao) => {
+    previsao(latitude, longitude, (erro, dadosPrevisao) => {
         if(erro){
-            return console.log(erro);
+            return erro;
         }
-        console.log(`Cidade: ${dados.body.features[0].place_name} ` + 
-        `Latitude: ${dados.body.features[0].geometry.coordinates[1]} ` +
-        `Longitude: ${dados.body.features[0].geometry.coordinates[0]} `);
-        console.log(`${dadosPrevisao.body.daily.data[0].summary} A temperatura atual é de: ${dadosPrevisao.body.currently.temperature}°C.` +
-                                `A probabilidade de chuva é de: ${dadosPrevisao.body.currently.precipProbability}%`);
+        console.log(dadosPrevisao + ' ' + local);
+        // console.log(`Cidade: ${dados.body.features[0].place_name} ` + 
+        // `Latitude: ${dados.body.features[0].geometry.coordinates[1]} ` +
+        // `Longitude: ${dados.body.features[0].geometry.coordinates[0]} `);
+        // console.log(`${dadosPrevisao.body.daily.data[0].summary} A temperatura atual é de: ${dadosPrevisao.body.currently.temperature}°C.` +
+        //                 `A probabilidade de chuva é de: ${dadosPrevisao.body.currently.precipProbability}%`);
     });
 });
+
+console.log(teste);
