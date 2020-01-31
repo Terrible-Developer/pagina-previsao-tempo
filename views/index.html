@@ -3,15 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title>Previsão do tempo</title>
+        <link rel="stylesheet" href="./css/index.css" type="text/css">
     </head>
     <body>
-        <h4>Insira o Nome da localização à ser buscada</h4>
-        <form>
-            <input placeholder="Localização">
-            <button type="submit">Buscar</button>
-        </form>
-        <p id="resultado">Resultado</p>
-
+        <div id="corpo">
+            <h4>Insira o Nome da localização à ser buscada</h4>
+            <form id="formulario">
+                <input id="textoLocal" placeholder="Localização">
+                <button id="botaoBusca" type="submit">Buscar</button>
+            </form>
+            <p id="resultado"></p>
+        </div>
         <script src="./scripts/index.js"></script>
     </body>
 </html>

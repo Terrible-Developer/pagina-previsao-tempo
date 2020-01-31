@@ -1,0 +1,15 @@
+#corpo{
+    height: auto;
+    width: auto;
+    text-align: center;
+}
+
+#textoLocal{
+    width: 130px;
+    height: 20px;
+}
+
+#botaoBusca{
+    width: auto;
+    height: 25px;
+}

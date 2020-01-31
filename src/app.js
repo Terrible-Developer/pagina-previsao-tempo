@@ -12,10 +12,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../views/index.html'));
 });
 
-app.get('/pagode', (req, res) => {
+app.get('/busca', (req, res) => {
     //console.log(req.query.nomeLocal);
     if(!req.query.nomeLocal){
-        return res.send('Erro, nenhuma localização foi inserida!');
+        return res.send({erro: 'Erro, nenhuma localização foi inserida!'});
     }
     localizacao(req.query.nomeLocal, (erro, {latitude, longitude, local} = {}) => {
         if(erro){
