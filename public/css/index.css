@@ -4,6 +4,14 @@
     text-align: center;
 }
 
+.linkPagina{
+    color: #b3b3b3;
+    text-decoration: none;
+    text-shadow: black;
+    font-weight: bold;
+    font-size: 16px;
+}
+
 #textoLocal{
     width: 130px;
     height: 20px;
@@ -12,4 +20,7 @@
 #botaoBusca{
     width: auto;
     height: 25px;
+    border: 1px solid #3D3D3D;
+    background-color: #3D3D3D;
+    color: white;
 }

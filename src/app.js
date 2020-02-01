@@ -35,6 +35,10 @@ app.get('/busca', (req, res) => {
     });
 });
 
+app.get('/sobre', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views/sobre.html'));
+})
+
 app.get('/extra', (req, res) => {
     res.sendFile(path.join(__dirname, '../views/extra.html'));
 });
