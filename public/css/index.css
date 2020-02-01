@@ -1,6 +1,25 @@
+body{
+    font-family: Arial;
+    margin: 0 auto;
+    padding: 0 15px;
+    min-height: 90vh;
+}
+
 #corpo{
-    height: auto;
+    height: 85vh;
     width: auto;
+    text-align: center;
+}
+
+h1{
+    font-size: 64px;
+}
+
+footer{
+    color: #888888;
+    border-top: 1px solid #eeeeee;
+    margin-top: 16px;
+    padding: 16px 0;
     text-align: center;
 }
 
@@ -9,7 +28,7 @@
     text-decoration: none;
     text-shadow: black;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 #textoLocal{
