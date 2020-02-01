@@ -15,7 +15,7 @@ formulario.addEventListener('submit', (e) => {
             resultado.innerText = dados.erro;
         }else{
             console.log(dados);
-            resultado.innerText = dados.local + '\n' + dados.previsao + '\nTermo Pesquisado:' + dados.termoPesquisado;
+            resultado.innerText = dados.local + '\n' + dados.previsao;
         }
     });
  });
