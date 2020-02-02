@@ -9,7 +9,7 @@ const previsao = (latitude, longitude, callback) => {
             callback('Localização não encontrada', undefined)
         }else{
             callback(undefined, `${body.daily.data[0].summary} A temperatura atual é de ${body.currently.temperature} C°,` + 
-            `e a chance de chuva é de ${body.currently.precipProbability * 10}%`); 
+            `e a chance de chuva é de ${body.currently.precipProbability * 10}%`);
         }
     });
 }
