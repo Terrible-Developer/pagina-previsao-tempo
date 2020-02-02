@@ -8,7 +8,7 @@ formulario.addEventListener('submit', (e) => {
     resultado.textContent = 'Carregando Requisição. Por Favor Aguarde';
     const nome = nomeBusca.value;
     console.log(nome);
-    fetch('http://localhost:9000/busca?nomeLocal=' + nome).then((resposta) => {
+    fetch('/busca?nomeLocal=' + nome).then((resposta) => {
     console.log(resposta);
     resposta.json().then((dados) => {
         if(dados.erro){

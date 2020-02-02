@@ -5,6 +5,8 @@ const previsao = require('./utils/previsao');
 
 const app = express();
 
+const porta = process.env.PORT || 9000;
+
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, 'utils')));
 
@@ -43,15 +45,7 @@ app.get('/extra', (req, res) => {
     res.sendFile(path.join(__dirname, '../views/extra.html'));
 });
 
-const server = app.listen(9000, () => {
+const server = app.listen(porta, () => {
     console.log(`Express rodando → PORTA ${server.address().port}`);
 });
-
-// const localizacao = require("./utils/localizacao.js");
-
-// if(process.argv[2] === undefined){
-//     console.log('Nenhuma localização foi inserida!');
-// }else{
-//     localizacao(process.argv[2]);
-// }
 
